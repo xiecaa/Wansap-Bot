@@ -49,8 +49,8 @@ async function startR(){
     xcaa.ws.on('CB:call', async (json) => {
     const callerId = json.content[0].attrs['call-creator']
     if (json.content[0].tag == 'offer') {
-    let rof = await xcaa.sendContact(callerId, global.owner)
-    xcaa.sendMessage(callerId, { text: `Sistem Block Otomatis\nJangan Menelpon Bot!`}, { quoted : rof })
+    let rof = await xcaa.sendContact(callerId, global.ownerNumber)
+    xcaa.sendMessage(callerId, { text: `Sistem Block Otomatis\nJangan Menelpon Bot!,\nJika Memang Tidack Disengaja Hubungi Owner`}, { quoted : rof })
     await sleep(8000)
     await xcaa.updateBlockStatus(callerId, "block")
     }
